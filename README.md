@@ -12,7 +12,7 @@
   [Repo](https://github.com/alina951/tutoring-progress-tracker) 
 
 - **Mugshot Coffee** — Cloud ETL pipeline on AWS (S3 ➜ Lambda ➜ Redshift ➜ Grafana). Handles real-time transaction insights for coffee shops.  
-  [Repo](https://github.com/generation-de-nat2/Mugshot-Coffee) 
+  [Repo](https://github.com/alina951/mugshot-cafe) 
 
 
 
