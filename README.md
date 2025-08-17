@@ -12,10 +12,10 @@
 
 ### 🚀 Featured Projects
 - **Tutoring Progress Tracker** — Google Forms ➜ Sheets ➜ Python flags, progress dashboards.  
-  Repo: https://github.com/<your-username>/tutoring-progress-tracker • Demo: https://<your-username>.github.io/#projects
+  Repo: https://github.com/alina951/tutoring-progress-tracker • Demo: https://<your-username>.github.io/#projects
 
-- **Shape Checker** — Interactive app that teaches area of shapes (square/rectangle/triangle).  
-  Repo: https://github.com/<your-username>/shape-checker • Demo: https://<your-username>.github.io/#projects
+- **Drumzkit** — .  
+  Repo: https://github.com/alina951/drumzkit • Demo: https://<your-username>.github.io/#projects
 
 - **MindMood Metrics** — Reddit social listening + sentiment analysis on mental health topics.  
   Repo: https://github.com/<your-username>/mindmood-metrics • Demo: https://<your-username>.github.io/#projects
