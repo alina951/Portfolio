@@ -9,20 +9,19 @@
 
 ### 🚀 Featured Projects
 - **Tutoring Progress Tracker** — Google Forms ➜ Sheets ➜ Python ETL with data-quality flags, feeding into dashboards.  
-  [Repo](https://github.com/alina951/tutoring-progress-tracker) • [Demo](https://alina951.github.io/#tutoring-progress-tracker)
+  [Repo](https://github.com/alina951/tutoring-progress-tracker) 
 
 - **Mugshot Coffee** — Cloud ETL pipeline on AWS (S3 ➜ Lambda ➜ Redshift ➜ Grafana). Handles real-time transaction insights for coffee shops.  
-  [Repo](https://github.com/generation-de-nat2/Mugshot-Coffee) • [Demo](https://alina951.github.io/#mugshot-coffee)
+  [Repo](https://github.com/generation-de-nat2/Mugshot-Coffee) 
 
-- **Shape Checker** — Interactive web app to teach kids geometry (areas of basic shapes, expanding to polygons).  
-  [Repo](https://github.com/alina951/shape-checker) • [Demo](https://alina951.github.io/#shape-checker)
+
 
 - **Drumzkit** — Browser-based drum kit built with HTML, CSS, and JavaScript.  
-  [Repo](https://github.com/alina951/drumzkit) • [Demo](https://alina951.github.io/#drumzkit)
+  [Repo](https://github.com/alina951/drumzkit) 
 
 ---
 
-### 🧰 Tech Stack
+
 ### 🧰 Tech Stack
 - **Languages:** Python, SQL, JavaScript (basic for Drumzkit)
 - **Data & ML:** Pandas, NumPy, spaCy, NLTK
