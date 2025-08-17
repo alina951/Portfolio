@@ -14,7 +14,7 @@
 - **Tutoring Progress Tracker** — Google Forms ➜ Sheets ➜ Python flags, progress dashboards.  
   Repo: https://github.com/alina951/tutoring-progress-tracker • Demo: https://<your-username>.github.io/#projects
 
-- **Drumzkit** — .  
+- **Drumzkit** — An interactive drum kit built using HTML, CSS, and JavaScript.  Plays various drum sounds.
   Repo: https://github.com/alina951/drumzkit • Demo: https://<your-username>.github.io/#projects
 
 - **MindMood Metrics** — Reddit social listening + sentiment analysis on mental health topics.  
