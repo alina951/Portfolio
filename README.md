@@ -6,32 +6,38 @@
 
 ---
 
+
 ### 🚀 Featured Projects
-- **Tutoring Progress Tracker** — Google Forms ➜ Sheets ➜ Python flags, progress dashboards.  
-  Repo: https://github.com/alina951/tutoring-progress-tracker • Demo: https://<your-username>.github.io/#projects
+- **Tutoring Progress Tracker** — Google Forms ➜ Sheets ➜ Python ETL with data-quality flags, feeding into dashboards.  
+  [Repo](https://github.com/alina951/tutoring-progress-tracker) • [Demo](https://alina951.github.io/#tutoring-progress-tracker)
 
-- **Drumzkit** — An interactive drum kit built using HTML, CSS, and JavaScript.  Plays various drum sounds.
-  Repo: https://github.com/alina951/drumzkit • Demo: https://<your-username>.github.io/#projects
+- **Mugshot Coffee** — Cloud ETL pipeline on AWS (S3 ➜ Lambda ➜ Redshift ➜ Grafana). Handles real-time transaction insights for coffee shops.  
+  [Repo](https://github.com/generation-de-nat2/Mugshot-Coffee) • [Demo](https://alina951.github.io/#mugshot-coffee)
 
+- **Shape Checker** — Interactive web app to teach kids geometry (areas of basic shapes, expanding to polygons).  
+  [Repo](https://github.com/alina951/shape-checker) • [Demo](https://alina951.github.io/#shape-checker)
 
-   **Mugshot Café** — Barista order system that calculates and displays total price for coffee orders (type, size, eat-in/takeaway).  
-  Repo: https://github.com/alina951/mugshot-cafe • Demo: https://<alina951>.github.io/#projects
+- **Drumzkit** — Browser-based drum kit built with HTML, CSS, and JavaScript.  
+  [Repo](https://github.com/alina951/drumzkit) • [Demo](https://alina951.github.io/#drumzkit)
 
 ---
 
 ### 🧰 Tech Stack
-- **Languages:** Python, SQL
-- **Data:** Pandas, NumPy
-- **Pipelines:** Airflow (or Prefect), gspread, requests
-- **Cloud/Storage:** Google Sheets/Drive API, (optionally) BigQuery/S3
-- **Viz:** Matplotlib/Plotly, Google Looker Studio
+### 🧰 Tech Stack
+- **Languages:** Python, SQL, JavaScript (basic for Drumzkit)
+- **Data & ML:** Pandas, NumPy, spaCy, NLTK
+- **Pipelines:** Apache Airflow / Prefect, AWS Lambda, gspread, requests
+- **Cloud/Storage:** AWS (S3, Redshift, CloudFormation, EC2), Google Sheets/Drive API, Docker
+- **Viz & Dashboards:** Matplotlib, Plotly, Grafana, Google Looker Studio
+- **Other:** GitHub Actions, Docker Compose
+
 
 ---
 
 ### 📌 What I'm working on
-- Improving data-quality checks in Tutoring Progress Tracker
-- Expanding Shape Checker to support regular polygons
-- Topic modeling & network graphs for MindMood Metrics
+- BeatFlow data project
+- Predicting grades 
+
 
 ---
 
