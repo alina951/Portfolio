@@ -34,8 +34,12 @@
 ---
 
 ### 📌 What I'm working on
-- BeatFlow data project
-- Predicting grades 
+- **BeatFlow** — A data project exploring music streaming patterns to uncover trends and build predictive insights.  
+- **Predicting Grades** — Using machine learning to forecast student performance from assessment data.  
+- Improving **data-quality checks** in Tutoring Progress Tracker  
+- Expanding **Shape Checker** to support regular polygons  
+  
+
 
 
 ---
