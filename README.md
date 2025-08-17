@@ -47,4 +47,4 @@
 ### 📫 Contact
 - Email: alina_arus@yahoo.com.com
 - LinkedIn: https://www.linkedin.com/in/alina-arus-6a18a0319
-- Portfolio Site: https://alina951.github.io/portfolio/
+- Portfolio Site: https://alina951.github.io/portfolio
