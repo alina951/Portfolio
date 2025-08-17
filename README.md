@@ -1,11 +1,11 @@
 <!-- Profile README for <alina951> -->
-<h1 align="center">Hi, I'm < Alina> 👋</h1>
+<h1 align="center">Hi, I'm  Alina 👋</h1>
 <p align="center">Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
 
 <p align="center">
   <a href="https://<alina951>.github.io" target="_blank">🌐 Portfolio Website</a> •
-  <a href="mailto:your.email@example.com">✉️ Email</a> •
-  <a href="https://www.linkedin.com/in/<your-linkedin>/">🔗 LinkedIn</a>
+  <a href="mailto:alina_arus@yahoo.com">✉️ Email</a> •
+  <a href="https://www.linkedin.com/in/alina-arus-6a18a0319>/">🔗 LinkedIn</a>
 </p>
 
 ---
@@ -17,9 +17,7 @@
 - **Drumzkit** — An interactive drum kit built using HTML, CSS, and JavaScript.  Plays various drum sounds.
   Repo: https://github.com/alina951/drumzkit • Demo: https://<your-username>.github.io/#projects
 
-- **MindMood Metrics** — Reddit social listening + sentiment analysis on mental health topics.  
-  Repo: https://github.com/<your-username>/mindmood-metrics • Demo: https://<your-username>.github.io/#projects
-  
+
    **Mugshot Café** — Barista order system that calculates and displays total price for coffee orders (type, size, eat-in/takeaway).  
   Repo: https://github.com/alina951/mugshot-cafe • Demo: https://<alina951>.github.io/#projects
 
