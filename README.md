@@ -21,7 +21,7 @@
   Repo: https://github.com/<your-username>/mindmood-metrics • Demo: https://<your-username>.github.io/#projects
   
    **Mugshot Café** — Barista order system that calculates and displays total price for coffee orders (type, size, eat-in/takeaway).  
-  Repo: https://github.com/<alina951>/mugshot-cafe • Demo: https://<alina951>.github.io/#projects
+  Repo: https://github.com/alina951/mugshot-cafe • Demo: https://<alina951>.github.io/#projects
 
 ---
 
