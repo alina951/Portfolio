@@ -1,5 +1,5 @@
 <!-- Profile README for <alina951> -->
-<h1 align="center">Hi, I'm <Your Alina> 👋</h1>
+<h1 align="center">Hi, I'm < Alina> 👋</h1>
 <p align="center">Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
 
 <p align="center">
@@ -40,5 +40,5 @@
 
 ### 📫 Contact
 - Email: alina_arus@yahoo.com.com
-- LinkedIn: https://www.linkedin.com/in/alina-arus-6a18a0319>/
+- LinkedIn: https://www.linkedin.com/in/alina-arus-6a18a0319
 - Portfolio Site: https://<alina951>.github.io
