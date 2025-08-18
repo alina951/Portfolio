@@ -105,9 +105,7 @@
   <header>
     <div class="hero">
       <div class="intro">
-        <h1>Hi — I'm <span style="color:var(--accent2)">Alina</span>,
-          <br><span style="font-weight:700;display:inline-block">building reliable data pipelines and delightful tools</span>
-        </h1>
+        <h1>Hi — I'm <span style="color:var(--accent2)">Alina</span>,<br><span style="font-weight:700;display:inline-block">building reliable data pipelines and delightful tools</span></h1>
         <p class="lead">I combine Python, cloud tools and pragmatic engineering to move data from source to insight. I focus on clean ETL, automation, and practical ML prototypes.</p>
         <div class="cta">
           <a class="btn primary" href="#projects">See Projects</a>
@@ -165,7 +163,7 @@
         <h3>Mugshot Coffee (ETL)</h3>
         <p>Batch pipeline: S3 landing → Lambda transforms → Redshift warehouse → Grafana dashboards for sales insights.</p>
         <div class="badges"><span class="badge">AWS</span><span class="badge">Redshift</span><span class="badge">S3</span></div>
-        <div class="actions"><a class="link" href="#">Case Study</a></div>
+        <div class="actions"><a class="link" href="https://github.com/alina951/mugshot-cafe" target="_blank">View Code</a></div>
       </article>
 
       <article class="proj" data-tags="frontend">
@@ -174,14 +172,6 @@
         <p>Browser-based drum kit with keyboard mapping, audio layering and latency-tuned interactions for practice.</p>
         <div class="badges"><span class="badge">HTML</span><span class="badge">JS</span></div>
         <div class="actions"><a class="link" href="https://github.com/alina951/drumzkit" target="_blank">View Code</a></div>
-      </article>
-
-      <article class="proj" data-tags="python ml">
-        <div class="meta"><div class="small">2024</div><div class="small">NLP • Reddit</div></div>
-        <h3>MindMood Metrics</h3>
-        <p>Social-listening pipeline that pulls Reddit data, applies sentiment analysis and topic models to monitor mental health signals.</p>
-        <div class="badges"><span class="badge">NLP</span><span class="badge">Pandas</span><span class="badge">PRAW</span></div>
-        <div class="actions"><a class="link" href="#">Read Case Study</a></div>
       </article>
 
     </div>
@@ -243,7 +233,6 @@
   </footer>
 
   <script>
-    // THEME
     const themeBtn = document.getElementById('themeBtn');
     const current = localStorage.getItem('theme');
     if(current === 'light') document.documentElement.setAttribute('data-theme','light');
@@ -253,41 +242,6 @@
       localStorage.setItem('theme', now === 'light' ? 'light' : 'dark');
     });
 
-    // FILTERS
     document.querySelectorAll('.chip').forEach(btn=>{
       btn.addEventListener('click', ()=>{
-        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-        btn.classList.add('active');
-        const f = btn.dataset.filter;
-        document.querySelectorAll('.proj').forEach(p=>{
-          if(f==='all') p.style.display='block';
-          else p.style.display = p.dataset.tags.includes(f) ? 'block' : 'none';
-        });
-      });
-    });
-
-    // Small form handler (no backend) — copies message to clipboard for you
-    function handleSubmit(e){
-      e.preventDefault();
-      const form = e.target;
-      const name = form.name.value.trim();
-      const msg = form.message.value.trim();
-      const payload = `From: ${name}
-
-${msg}`;
-      navigator.clipboard.writeText(payload).then(()=>{
-        alert('Message copied to clipboard — paste into email to send.');
-        form.reset();
-      },()=>{alert('Unable to copy. Please email directly.');});
-    }
-
-    // Small reveal on scroll
-    const obs = new IntersectionObserver((entries)=>{
-      entries.forEach(en=>{
-        if(en.isIntersecting) en.target.style.transform = 'translateY(0)';
-      });
-    },{threshold:0.08});
-    document.querySelectorAll('.proj, .card, section').forEach(el=>{el.style.transform='translateY(12px)';el.style.transition='transform .6s cubic-bezier(.2,.9,.3,1)';obs.observe(el)});
-  </script>
-</body>
-</html>
+        document.querySelectorAll('.
