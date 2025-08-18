@@ -6,22 +6,25 @@
 <title>Alina's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Global Styles */
-  * { box-sizing:border-box; margin:0; padding:0; }
+  * { margin:0; padding:0; box-sizing:border-box; }
   body, html { font-family:'Poppins', sans-serif; background:#0f0f1e; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
+
+  /* Particle background */
+  #particles { position:fixed; width:100%; height:100%; top:0; left:0; z-index:0; }
+
   a { text-decoration:none; color:inherit; }
   h2 { text-align:center; font-size:2.5rem; margin:2rem 0; position:relative; }
   h2::after { content:''; display:block; width:80px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
 
-  /* Header */
-  header { text-align:center; padding:10vh 2rem; background:linear-gradient(135deg,#ff4d6d,#6a11cb); }
-  header h1 { font-size:3.5rem; color:white; animation: glow 2s ease-in-out infinite alternate; }
+  header { text-align:center; padding:10vh 2rem; position:relative; z-index:2; }
+  header h1 { font-size:3.5rem; background:linear-gradient(90deg,#ff4d6d,#6a11cb); -webkit-background-clip:text; color:transparent; animation: glow 2s ease-in-out infinite alternate; }
   header p { font-size:1.5rem; color:#f0f0f0; margin-top:0.5rem; }
+
   @keyframes glow { 0%{text-shadow:0 0 10px #ff4d6d;} 50%{text-shadow:0 0 30px #6a11cb;} 100%{text-shadow:0 0 10px #ff4d6d;} }
 
   /* Projects */
-  .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:2rem 1rem; perspective:1000px; }
-  .card { width:280px; height:350px; background:#1e1e2f; border-radius:20px; overflow:hidden; box-shadow:0 0 30px rgba(255,77,109,0.5); transition:transform 0.6s; transform-style:preserve-3d; cursor:pointer; }
+  .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:2rem 1rem; perspective:1500px; z-index:2; position:relative; }
+  .card { width:300px; height:380px; background:#1e1e2f; border-radius:20px; overflow:hidden; box-shadow:0 0 40px rgba(255,77,109,0.6); transform-style:preserve-3d; transition:transform 0.6s; cursor:pointer; }
   .card:hover { transform: rotateY(15deg) rotateX(10deg) scale(1.05); }
   .card img { width:100%; height:180px; object-fit:cover; border-bottom:2px solid #ff4d6d; transition:0.5s; }
   .card-content { padding:1rem; }
@@ -31,35 +34,28 @@
   .btn:hover { transform:scale(1.1) rotate(-5deg); }
 
   /* Tech Stack */
-  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; padding:2rem 1rem; }
-  .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; justify-content:center; align-items:center; color:white; font-weight:700; font-size:0.8rem; box-shadow:0 0 20px rgba(255,77,109,0.5); transition:0.5s; }
+  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; padding:2rem 1rem; position:relative; z-index:2; }
+  .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; justify-content:center; align-items:center; color:white; font-weight:700; font-size:0.9rem; box-shadow:0 0 25px rgba(255,77,109,0.7); transition:0.5s; animation: floatTech 4s ease-in-out infinite alternate; }
   .tech:hover { transform:scale(1.2) rotate(10deg); }
+  @keyframes floatTech { 0%{transform:translateY(0);} 50%{transform:translateY(-10px);} 100%{transform:translateY(0);} }
 
-  /* What I'm Working On */
-  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; padding:2rem 1rem; }
+  /* Working On Tasks */
+  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; padding:2rem 1rem; position:relative; z-index:2; }
   .task { padding:1rem 2rem; border-radius:15px; background:linear-gradient(45deg,#ff4d6d,#6a11cb); box-shadow:0 0 20px rgba(255,77,109,0.5); font-weight:600; transition:0.3s; }
   .task:hover { transform:scale(1.05) rotate(-5deg); }
 
   /* Contact */
-  .contact { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; padding:2rem 1rem; }
+  .contact { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; padding:2rem 1rem; position:relative; z-index:2; }
   .contact a { padding:1rem 2rem; border-radius:15px; font-weight:600; background:linear-gradient(45deg,#ff4d6d,#6a11cb); color:white; transition:0.3s; }
   .contact a:hover { transform:scale(1.1) rotate(5deg); }
 
-  /* Footer */
-  footer { text-align:center; padding:2rem; background:#111; }
+  footer { text-align:center; padding:2rem; background:#111; position:relative; z-index:2; }
 
-  /* Floating shapes background */
-  .floating-shape { position:absolute; border-radius:50%; opacity:0.1; animation: float 15s linear infinite; z-index:1; }
-  @keyframes float { 0% {transform:translateY(0) rotate(0deg);} 50% {transform:translateY(-50px) rotate(180deg);} 100% {transform:translateY(0) rotate(360deg);} }
 </style>
 </head>
 <body>
 
-<!-- Floating shapes -->
-<div class="floating-shape" style="width:120px;height:120px;top:10%;left:15%;background:#ff4d6d;"></div>
-<div class="floating-shape" style="width:150px;height:150px;top:50%;left:70%;background:#6a11cb;"></div>
-<div class="floating-shape" style="width:80px;height:80px;top:70%;left:30%;background:#ff4d6d;"></div>
-<div class="floating-shape" style="width:100px;height:100px;top:20%;left:80%;background:#6a11cb;"></div>
+<canvas id="particles"></canvas>
 
 <header>
   <h1>Hi, I'm Alina 👋</h1>
@@ -136,6 +132,46 @@
 <footer>
   <p>&copy; 2025 Alina Arus</p>
 </footer>
+
+<script>
+  // Particles.js effect
+  const canvas = document.getElementById('particles');
+  const ctx = canvas.getContext('2d');
+  let particlesArray;
+  function initParticles(){
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particlesArray = [];
+    for(let i=0;i<100;i++){
+      particlesArray.push({
+        x:Math.random()*canvas.width,
+        y:Math.random()*canvas.height,
+        size:Math.random()*3+1,
+        speedX:(Math.random()-0.5)*1,
+        speedY:(Math.random()-0.5)*1
+      });
+    }
+  }
+  function animateParticles(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particlesArray.forEach(p=>{
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fillStyle='rgba(255,77,109,0.5)';
+      ctx.fill();
+      p.x+=p.speedX;
+      p.y+=p.speedY;
+      if(p.x<0)p.x=canvas.width;
+      if(p.x>canvas.width)p.x=0;
+      if(p.y<0)p.y=canvas.height;
+      if(p.y>canvas.height)p.y=0;
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  window.addEventListener('resize',initParticles);
+  initParticles();
+  animateParticles();
+</script>
 
 </body>
 </html>
