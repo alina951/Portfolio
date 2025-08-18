@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alina's Portfolio</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f9;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0.5rem 0;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    section {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h2 {
+      color: #4CAF50;
+      border-bottom: 2px solid #4CAF50;
+      padding-bottom: 0.5rem;
+    }
+    ul.projects {
+      list-style: none;
+      padding: 0;
+    }
+    ul.projects li {
+      background: white;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    ul.projects li:hover {
+      transform: scale(1.02);
+    }
+    a {
+      color: #4CAF50;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #333;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hi, I'm Alina 👋</h1>
+    <p>Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
+  </header>
+
+  <section>
+    <h2>🚀 Projects</h2>
+    <ul class="projects">
+      <li><a href="https://github.com/alina951/tutoring-progress-tracker">Tutoring Progress Tracker</a> — ETL pipeline using Google Forms & Sheets with Python dashboards.</li>
+      <li><a href="https://github.com/generation-de-nat2/Mugshot-Coffee">Mugshot Coffee</a> — AWS ETL pipeline: S3 → Lambda → Redshift → Grafana dashboards.</li>
+      <li><a href="https://github.com/alina951/shape-checker">Shape Checker</a> — Interactive geometry app for kids, calculating areas of shapes and polygons.</li>
+      <li><a href="https://github.com/alina951/drumzkit">Drumzkit</a> — Browser-based drum kit with HTML, CSS & JavaScript.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>📫 Contact</h2>
+    <p>Email: <a href="mailto:alina_arus@yahoo.com">alina_arus@yahoo.com</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/alina-arus-6a18a0319">Alina Arus</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Alina Arus</p>
+  </footer>
+
+</body>
+</html>
