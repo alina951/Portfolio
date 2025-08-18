@@ -6,24 +6,16 @@
 <title>Alina's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Global */
   body, html { margin:0; padding:0; font-family:'Poppins', sans-serif; overflow-x:hidden; background:#0f0f1e; color:#fff; }
   a { text-decoration:none; }
   h2 { text-align:center; font-size:2.2rem; margin:2rem 0; position:relative; }
   h2::after { content:''; display:block; width:60px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
-
-  /* Floating Background Shapes */
   .floating-shape { position:absolute; border-radius:50%; opacity:0.15; animation: float 15s linear infinite; }
   @keyframes float { 0% {transform:translateY(0px) rotate(0deg);} 50% {transform:translateY(-50px) rotate(180deg);} 100% {transform:translateY(0px) rotate(360deg);} }
-
-  /* Header */
   header { text-align:center; padding:8rem 1rem; position:relative; z-index:2; }
   header h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(90deg,#ff4d6d,#6a11cb); -webkit-background-clip:text; color:transparent; animation: glow 2s ease-in-out infinite alternate; }
   header p { font-size:1.5rem; color:#aaa; }
-
   @keyframes glow { 0%{filter:drop-shadow(0 0 5px #ff4d6d);} 50%{filter:drop-shadow(0 0 20px #6a11cb);} 100%{filter:drop-shadow(0 0 5px #ff4d6d);} }
-
-  /* Projects Section */
   .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; perspective:1000px; }
   .card { background:#1e1e2f; border-radius:20px; overflow:hidden; width:280px; height:350px; box-shadow:0 0 30px rgba(255,77,109,0.5); transform-style:preserve-3d; transition: transform 0.6s; }
   .card:hover { transform: rotateY(15deg) rotateX(10deg) scale(1.05); }
@@ -34,28 +26,19 @@
   .card-content p { font-size:0.9rem; margin:0.5rem 0; color:#ccc; }
   .btn { display:inline-block; padding:0.5rem 1rem; background:linear-gradient(45deg,#ff4d6d,#6a11cb); border-radius:10px; color:white; font-weight:600; transition:0.3s; }
   .btn:hover { transform:scale(1.1) rotate(-5deg); }
-
-  /* Tech Stack Floating Icons */
-  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-bottom:3rem; }
   .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:0.8rem; box-shadow:0 0 20px rgba(255,77,109,0.5); animation: float 6s ease-in-out infinite; }
-
-  /* Working On Tasks */
-  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:3rem; }
   .task { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; box-shadow:0 0 20px rgba(255,77,109,0.5); font-weight:600; transition:0.3s; }
   .task:hover { transform:rotate(-5deg) scale(1.05); }
-
-  /* Contact */
   .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:5rem; }
   .contact a { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; color:white; font-weight:600; transition:0.3s; }
   .contact a:hover { transform:scale(1.1) rotate(5deg); }
-
   footer { text-align:center; padding:2rem; background:#111; color:#fff; }
-
 </style>
 </head>
 <body>
 
-<!-- Floating shapes -->
 <div class="floating-shape" style="width:100px;height:100px;top:10%;left:20%;background:#ff4d6d;"></div>
 <div class="floating-shape" style="width:150px;height:150px;top:50%;left:70%;background:#6a11cb;"></div>
 <div class="floating-shape" style="width:80px;height:80px;top:70%;left:30%;background:#ff4d6d;"></div>
@@ -87,38 +70,3 @@
     </div>
     <div class="card">
       <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
-      <div class="card-content">
-        <h3>Shape Checker</h3>
-        <p>Interactive geometry app for kids.</p>
-        <a href="https://github.com/alina951/shape-checker" class="btn">View Repo</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/400x200/?music,drums" alt="Drumzkit">
-      <div class="card-content">
-        <h3>Drumzkit</h3>
-        <p>Browser-based drum kit with HTML, CSS & JS.</p>
-        <a href="https://github.com/alina951/drumzkit" class="btn">View Repo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>🧰 Tech Stack</h2>
-  <div class="tech-stack">
-    <div class="tech">Python</div>
-    <div class="tech">SQL</div>
-    <div class="tech">AWS</div>
-    <div class="tech">ETL</div>
-    <div class="tech">Docker</div>
-    <div class="tech">Pandas</div>
-  </div>
-</section>
-
-<section>
-  <h2>💡 What I'm Working On</h2>
-  <div class="working-on">
-    <div class="task">BeatFlow Data Project</div>
-    <div class="task">Predicting Grades</div>
-    <div class="task">Mind
