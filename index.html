@@ -1,272 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alina's Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f0f4f8;
-      color: #333;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alina's Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Global Styles */
+  body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+  body { background: #f0f4f8; color: #333; }
+  a { text-decoration: none; color: inherit; }
+  h2 { text-align: center; color: #2575fc; font-size: 2rem; margin-bottom: 2rem; position: relative; }
+  h2::after { content: ''; display: block; width: 60px; height: 4px; background: #6a11cb; margin: 0.5rem auto 0; border-radius: 2px; }
 
-    /* Hero Section */
-    header {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      text-align: center;
-      padding: 5rem 1rem;
-    }
+  /* Navigation */
+  nav { position: fixed; width: 100%; top: 0; left: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 999; display: flex; justify-content: center; padding: 1rem; }
+  nav a { margin: 0 1rem; font-weight: 600; color: #333; transition: 0.3s; }
+  nav a:hover { color: #6a11cb; }
 
-    header h1 {
-      font-size: 3rem;
-      margin: 0.5rem 0;
-    }
+  /* Hero Section */
+  header {
+    background: url('https://source.unsplash.com/1600x900/?technology,data') center/cover no-repeat;
+    color: white; text-align: center; padding: 8rem 1rem;
+    position: relative;
+  }
+  header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
+  header h1, header p { position: relative; z-index: 1; }
+  header h1 { font-size: 3rem; margin-bottom: 1rem; animation: fadeInDown 1s ease forwards; }
+  header p { font-size: 1.5rem; animation: fadeInUp 1s ease forwards; }
 
-    header p {
-      font-size: 1.5rem;
-      margin: 0;
-    }
+  /* Sections */
+  section { max-width: 1000px; margin: 5rem auto; padding: 0 1rem; }
+  .projects, .tech-stack, .working-on, .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
 
-    /* Sections */
-    section {
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1rem;
-    }
+  /* Card Styles */
+  .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transform: translateY(50px); opacity: 0; transition: 0.5s; }
+  .card img { width: 100%; height: 180px; object-fit: cover; }
+  .card-content { padding: 1rem; }
+  .card-content h3 { color: #6a11cb; margin-top: 0; }
+  .card-content p { font-size: 0.95rem; margin: 0.5rem 0 1rem 0; }
+  .btn { display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+  .btn:hover { background: linear-gradient(45deg, #2575fc, #6a11cb); }
 
-    h2 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 2rem;
-      color: #2575fc;
-      position: relative;
-    }
+  /* Tech Stack */
+  .tech { background: #fff; padding: 1rem 1.5rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; text-align:center; }
+  .tech:hover { transform: scale(1.2) rotate(5deg); }
 
-    h2::after {
-      content: '';
-      display: block;
-      width: 60px;
-      height: 4px;
-      background: #6a11cb;
-      margin: 0.5rem auto 0;
-      border-radius: 2px;
-    }
+  /* Working On Tasks */
+  .task { background: #2575fc; color: white; padding: 1rem 2rem; border-radius: 15px; text-align:center; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: transform 0.3s; }
+  .task:hover { transform: translateY(-5px) rotate(-2deg); }
 
-    /* Project Cards */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
+  /* Contact Buttons */
+  .contact a { text-align:center; background: linear-gradient(45deg, #6a11cb, #2575fc); padding: 1rem; border-radius: 10px; font-weight:600; transition: 0.3s; color:white; display:block; }
+  .contact a:hover { background: linear-gradient(45deg, #2575fc, #6a11cb); }
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+  /* Footer */
+  footer { text-align: center; padding: 2rem 1rem; background: #333; color: white; margin-top: 3rem; }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-    }
+  /* Animations */
+  @keyframes fadeInDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform:translateY(0);} }
+  @keyframes fadeInUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform:translateY(0);} }
 
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card-content h3 {
-      margin-top: 0;
-      color: #6a11cb;
-    }
-
-    .card-content p {
-      font-size: 0.95rem;
-      margin: 0.5rem 0 1rem 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background: #2575fc;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background: #6a11cb;
-    }
-
-    /* Tech Stack */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-
-    .tech {
-      background: #fff;
-      padding: 1rem 1.5rem;
-      border-radius: 50px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      font-weight: 600;
-      transition: transform 0.3s;
-    }
-
-    .tech:hover {
-      transform: scale(1.1);
-    }
-
-    /* Working On */
-    .working-on {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-    }
-
-    .task {
-      background: #2575fc;
-      color: white;
-      padding: 1rem 2rem;
-      border-radius: 15px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .task:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.2);
-    }
-
-    /* Contact */
-    .contact {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .contact a {
-      text-decoration: none;
-      color: white;
-      background: #6a11cb;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      font-weight: 600;
-      transition: background 0.3s;
-    }
-
-    .contact a:hover {
-      background: #2575fc;
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      background: #333;
-      color: white;
-      margin-top: 3rem;
-    }
-
-  </style>
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Hi, I'm Alina 👋</h1>
-    <p>Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
-  </header>
+<nav>
+  <a href="#projects">Projects</a>
+  <a href="#tech">Tech Stack</a>
+  <a href="#working">Working On</a>
+  <a href="#contact">Contact</a>
+</nav>
 
-  <section>
-    <h2>🚀 Projects</h2>
-    <div class="projects">
-      <div class="card">
-        <img src="https://source.unsplash.com/400x200/?data,analytics" alt="Tutoring Tracker">
-        <div class="card-content">
-          <h3>Tutoring Progress Tracker</h3>
-          <p>Python ETL pipeline for tracking student progress using Google Forms & Sheets.</p>
-          <a href="https://github.com/alina951/tutoring-progress-tracker" class="btn">View Repo</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://source.unsplash.com/400x200/?coffee,shop" alt="Mugshot Coffee">
-        <div class="card-content">
-          <h3>Mugshot Coffee</h3>
-          <p>AWS ETL pipeline: S3 → Lambda → Redshift → Grafana dashboards for coffee orders.</p>
-          <a href="https://github.com/generation-de-nat2/Mugshot-Coffee" class="btn">View Repo</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
-        <div class="card-content">
-          <h3>Shape Checker</h3>
-          <p>Interactive geometry app for kids, calculating areas of shapes and polygons.</p>
-          <a href="https://github.com/alina951/shape-checker" class="btn">View Repo</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://source.unsplash.com/400x200/?music,drums" alt="Drumzkit">
-        <div class="card-content">
-          <h3>Drumzkit</h3>
-          <p>Browser-based drum kit built with HTML, CSS & JavaScript.</p>
-          <a href="https://github.com/alina951/drumzkit" class="btn">View Repo</a>
-        </div>
+<header>
+  <h1>Hi, I'm Alina 👋</h1>
+  <p>Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
+</header>
+
+<section id="projects">
+  <h2>🚀 Projects</h2>
+  <div class="projects">
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?data,analytics" alt="Tutoring Tracker">
+      <div class="card-content">
+        <h3>Tutoring Progress Tracker</h3>
+        <p>Python ETL pipeline for tracking student progress using Google Forms & Sheets.</p>
+        <a href="https://github.com/alina951/tutoring-progress-tracker" class="btn">View Repo</a>
       </div>
     </div>
-  </section>
-
-  <section>
-    <h2>🧰 Tech Stack</h2>
-    <div class="tech-stack">
-      <div class="tech">Python</div>
-      <div class="tech">SQL</div>
-      <div class="tech">ETL Pipelines</div>
-      <div class="tech">AWS</div>
-      <div class="tech">Docker</div>
-      <div class="tech">Pandas/NumPy</div>
-      <div class="tech">Grafana</div>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?coffee,shop" alt="Mugshot Coffee">
+      <div class="card-content">
+        <h3>Mugshot Coffee</h3>
+        <p>AWS ETL pipeline: S3 → Lambda → Redshift → Grafana dashboards.</p>
+        <a href="https://github.com/generation-de-nat2/Mugshot-Coffee" class="btn">View Repo</a>
+      </div>
     </div>
-  </section>
-
-  <section>
-    <h2>💡 What I'm Working On</h2>
-    <div class="working-on">
-      <div class="task">BeatFlow Data Project</div>
-      <div class="task">Predicting Grades</div>
-      <div class="task">Tutoring Progress Tracker Enhancements</div>
-      <div class="task">Shape Checker Polygons</div>
-      <div class="task">MindMood Metrics</div>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
+      <div class="card-content">
+        <h3>Shape Checker</h3>
+        <p>Interactive geometry app for kids, calculating areas of shapes and polygons.</p>
+        <a href="https://github.com/alina951/shape-checker" class="btn">View Repo</a>
+      </div>
     </div>
-  </section>
-
-  <section>
-    <h2>📫 Contact</h2>
-    <div class="contact">
-      <a href="mailto:alina_arus@yahoo.com">Email Me</a>
-      <a href="https://www.linkedin.com/in/alina-arus-6a18a0319">LinkedIn</a>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?music,drums" alt="Drumzkit">
+      <div class="card-content">
+        <h3>Drumzkit</h3>
+        <p>Browser-based drum kit built with HTML, CSS & JavaScript.</p>
+        <a href="https://github.com/alina951/drumzkit" class="btn">View Repo</a>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Alina Arus</p>
-  </footer>
+<section id="tech">
+  <h2>🧰 Tech Stack</h2>
+  <div class="tech-stack">
+    <div class="tech">Python</div>
+    <div class="tech">SQL</div>
+    <div class="tech">ETL Pipelines</div>
+    <div class="tech">AWS</div>
+    <div class="tech">Docker</div>
+    <div class="tech">Pandas/NumPy</div>
+    <div class="tech">Grafana</div>
+  </div>
+</section>
+
+<section id="working">
+  <h2>💡 What I'm Working On</h2>
+  <div class="working-on">
+    <div class="task">BeatFlow Data Project</div>
+    <div class="task">Predicting Grades</div>
+    <div class="task">Tutoring Tracker Enhancements</div>
+    <div class="task">Shape Checker Polygons</div>
+    <div class="task">MindMood Metrics</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>📫 Contact</h2>
+  <div class="contact">
+    <a href="mailto:alina_arus@yahoo.com">Email Me</a>
+    <a href="https://www.linkedin.com/in/alina-arus-6a18a0319">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Alina Arus</p>
+</footer>
+
+<script>
+  // Animate cards on scroll
+  const cards = document.querySelectorAll('.card, .tech, .task');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.style.transform = 'translateY(0)';
+        entry.target.style.opacity = '1';
+      }
+    });
+  }, { threshold: 0.2 });
+  cards.forEach(card => observer.observe(card));
+</script>
 
 </body>
 </html>
-
