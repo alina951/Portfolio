@@ -6,43 +6,60 @@
 <title>Alina's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  body, html { margin:0; padding:0; font-family:'Poppins', sans-serif; overflow-x:hidden; background:#0f0f1e; color:#fff; }
-  a { text-decoration:none; }
-  h2 { text-align:center; font-size:2.2rem; margin:2rem 0; position:relative; }
-  h2::after { content:''; display:block; width:60px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
-  .floating-shape { position:absolute; border-radius:50%; opacity:0.15; animation: float 15s linear infinite; }
-  @keyframes float { 0% {transform:translateY(0px) rotate(0deg);} 50% {transform:translateY(-50px) rotate(180deg);} 100% {transform:translateY(0px) rotate(360deg);} }
-  header { text-align:center; padding:8rem 1rem; position:relative; z-index:2; }
-  header h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(90deg,#ff4d6d,#6a11cb); -webkit-background-clip:text; color:transparent; animation: glow 2s ease-in-out infinite alternate; }
-  header p { font-size:1.5rem; color:#aaa; }
-  @keyframes glow { 0%{filter:drop-shadow(0 0 5px #ff4d6d);} 50%{filter:drop-shadow(0 0 20px #6a11cb);} 100%{filter:drop-shadow(0 0 5px #ff4d6d);} }
-  .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; perspective:1000px; }
-  .card { background:#1e1e2f; border-radius:20px; overflow:hidden; width:280px; height:350px; box-shadow:0 0 30px rgba(255,77,109,0.5); transform-style:preserve-3d; transition: transform 0.6s; }
+  /* Global Styles */
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body, html { font-family:'Poppins', sans-serif; background:#0f0f1e; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
+  a { text-decoration:none; color:inherit; }
+  h2 { text-align:center; font-size:2.5rem; margin:2rem 0; position:relative; }
+  h2::after { content:''; display:block; width:80px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
+
+  /* Header */
+  header { text-align:center; padding:10vh 2rem; background:linear-gradient(135deg,#ff4d6d,#6a11cb); }
+  header h1 { font-size:3.5rem; color:white; animation: glow 2s ease-in-out infinite alternate; }
+  header p { font-size:1.5rem; color:#f0f0f0; margin-top:0.5rem; }
+  @keyframes glow { 0%{text-shadow:0 0 10px #ff4d6d;} 50%{text-shadow:0 0 30px #6a11cb;} 100%{text-shadow:0 0 10px #ff4d6d;} }
+
+  /* Projects */
+  .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:2rem 1rem; perspective:1000px; }
+  .card { width:280px; height:350px; background:#1e1e2f; border-radius:20px; overflow:hidden; box-shadow:0 0 30px rgba(255,77,109,0.5); transition:transform 0.6s; transform-style:preserve-3d; cursor:pointer; }
   .card:hover { transform: rotateY(15deg) rotateX(10deg) scale(1.05); }
-  .card img { width:100%; height:180px; object-fit:cover; border-bottom:2px solid #ff4d6d; animation: spin 20s linear infinite; }
-  @keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+  .card img { width:100%; height:180px; object-fit:cover; border-bottom:2px solid #ff4d6d; transition:0.5s; }
   .card-content { padding:1rem; }
-  .card-content h3 { margin:0; color:#ff4d6d; }
-  .card-content p { font-size:0.9rem; margin:0.5rem 0; color:#ccc; }
-  .btn { display:inline-block; padding:0.5rem 1rem; background:linear-gradient(45deg,#ff4d6d,#6a11cb); border-radius:10px; color:white; font-weight:600; transition:0.3s; }
+  .card-content h3 { color:#ff4d6d; margin-bottom:0.5rem; }
+  .card-content p { color:#ccc; font-size:0.9rem; }
+  .btn { display:inline-block; margin-top:0.5rem; padding:0.5rem 1rem; background:linear-gradient(45deg,#ff4d6d,#6a11cb); color:white; font-weight:600; border-radius:10px; transition:0.3s; }
   .btn:hover { transform:scale(1.1) rotate(-5deg); }
-  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; margin-bottom:3rem; }
-  .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:0.8rem; box-shadow:0 0 20px rgba(255,77,109,0.5); animation: float 6s ease-in-out infinite; }
-  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; margin-bottom:3rem; }
-  .task { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; box-shadow:0 0 20px rgba(255,77,109,0.5); font-weight:600; transition:0.3s; }
-  .task:hover { transform:rotate(-5deg) scale(1.05); }
-  .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:5rem; }
-  .contact a { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; color:white; font-weight:600; transition:0.3s; }
+
+  /* Tech Stack */
+  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem; padding:2rem 1rem; }
+  .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; justify-content:center; align-items:center; color:white; font-weight:700; font-size:0.8rem; box-shadow:0 0 20px rgba(255,77,109,0.5); transition:0.5s; }
+  .tech:hover { transform:scale(1.2) rotate(10deg); }
+
+  /* What I'm Working On */
+  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; padding:2rem 1rem; }
+  .task { padding:1rem 2rem; border-radius:15px; background:linear-gradient(45deg,#ff4d6d,#6a11cb); box-shadow:0 0 20px rgba(255,77,109,0.5); font-weight:600; transition:0.3s; }
+  .task:hover { transform:scale(1.05) rotate(-5deg); }
+
+  /* Contact */
+  .contact { display:flex; justify-content:center; flex-wrap:wrap; gap:2rem; padding:2rem 1rem; }
+  .contact a { padding:1rem 2rem; border-radius:15px; font-weight:600; background:linear-gradient(45deg,#ff4d6d,#6a11cb); color:white; transition:0.3s; }
   .contact a:hover { transform:scale(1.1) rotate(5deg); }
-  footer { text-align:center; padding:2rem; background:#111; color:#fff; }
+
+  /* Footer */
+  footer { text-align:center; padding:2rem; background:#111; }
+
+  /* Floating shapes background */
+  .floating-shape { position:absolute; border-radius:50%; opacity:0.1; animation: float 15s linear infinite; z-index:1; }
+  @keyframes float { 0% {transform:translateY(0) rotate(0deg);} 50% {transform:translateY(-50px) rotate(180deg);} 100% {transform:translateY(0) rotate(360deg);} }
 </style>
 </head>
 <body>
 
-<div class="floating-shape" style="width:100px;height:100px;top:10%;left:20%;background:#ff4d6d;"></div>
+<!-- Floating shapes -->
+<div class="floating-shape" style="width:120px;height:120px;top:10%;left:15%;background:#ff4d6d;"></div>
 <div class="floating-shape" style="width:150px;height:150px;top:50%;left:70%;background:#6a11cb;"></div>
 <div class="floating-shape" style="width:80px;height:80px;top:70%;left:30%;background:#ff4d6d;"></div>
-<div class="floating-shape" style="width:120px;height:120px;top:20%;left:80%;background:#6a11cb;"></div>
+<div class="floating-shape" style="width:100px;height:100px;top:20%;left:80%;background:#6a11cb;"></div>
 
 <header>
   <h1>Hi, I'm Alina 👋</h1>
@@ -57,7 +74,7 @@
       <div class="card-content">
         <h3>Tutoring Progress Tracker</h3>
         <p>Python ETL pipeline using Google Forms & Sheets.</p>
-        <a href="https://github.com/alina951/tutoring-progress-tracker" class="btn">View Repo</a>
+        <a href="https://github.com/alina951/tutoring-progress-tracker" class="btn" target="_blank">View Repo</a>
       </div>
     </div>
     <div class="card">
@@ -65,8 +82,60 @@
       <div class="card-content">
         <h3>Mugshot Coffee</h3>
         <p>AWS ETL: S3 → Lambda → Redshift → Grafana dashboards.</p>
-        <a href="https://github.com/generation-de-nat2/Mugshot-Coffee" class="btn">View Repo</a>
+        <a href="https://github.com/generation-de-nat2/Mugshot-Coffee" class="btn" target="_blank">View Repo</a>
       </div>
     </div>
     <div class="card">
       <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
+      <div class="card-content">
+        <h3>Shape Checker</h3>
+        <p>Interactive geometry app for kids.</p>
+        <a href="https://github.com/alina951/shape-checker" class="btn" target="_blank">View Repo</a>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/400x200/?music,drums" alt="Drumzkit">
+      <div class="card-content">
+        <h3>Drumzkit</h3>
+        <p>Browser-based drum kit with HTML, CSS & JS.</p>
+        <a href="https://github.com/alina951/drumzkit" class="btn" target="_blank">View Repo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>🧰 Tech Stack</h2>
+  <div class="tech-stack">
+    <div class="tech">Python</div>
+    <div class="tech">SQL</div>
+    <div class="tech">AWS</div>
+    <div class="tech">ETL</div>
+    <div class="tech">Docker</div>
+    <div class="tech">Pandas</div>
+  </div>
+</section>
+
+<section>
+  <h2>💡 What I'm Working On</h2>
+  <div class="working-on">
+    <div class="task">BeatFlow Data Project</div>
+    <div class="task">Predicting Grades</div>
+    <div class="task">MindMood Metrics</div>
+  </div>
+</section>
+
+<section>
+  <h2>📫 Contact</h2>
+  <div class="contact">
+    <a href="mailto:alina_arus@yahoo.com">Email Me</a>
+    <a href="https://www.linkedin.com/in/alina-arus-6a18a0319" target="_blank">LinkedIn</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Alina Arus</p>
+</footer>
+
+</body>
+</html>
