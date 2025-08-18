@@ -6,85 +6,74 @@
 <title>Alina's Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  /* Global Styles */
-  body, html { margin: 0; padding: 0; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-  body { background: #f0f4f8; color: #333; }
-  a { text-decoration: none; color: inherit; }
-  h2 { text-align: center; color: #2575fc; font-size: 2rem; margin-bottom: 2rem; position: relative; }
-  h2::after { content: ''; display: block; width: 60px; height: 4px; background: #6a11cb; margin: 0.5rem auto 0; border-radius: 2px; }
+  /* Global */
+  body, html { margin:0; padding:0; font-family:'Poppins', sans-serif; overflow-x:hidden; background:#0f0f1e; color:#fff; }
+  a { text-decoration:none; }
+  h2 { text-align:center; font-size:2.2rem; margin:2rem 0; position:relative; }
+  h2::after { content:''; display:block; width:60px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
 
-  /* Navigation */
-  nav { position: fixed; width: 100%; top: 0; left: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 999; display: flex; justify-content: center; padding: 1rem; }
-  nav a { margin: 0 1rem; font-weight: 600; color: #333; transition: 0.3s; }
-  nav a:hover { color: #6a11cb; }
+  /* Floating Background Shapes */
+  .floating-shape { position:absolute; border-radius:50%; opacity:0.15; animation: float 15s linear infinite; }
+  @keyframes float { 0% {transform:translateY(0px) rotate(0deg);} 50% {transform:translateY(-50px) rotate(180deg);} 100% {transform:translateY(0px) rotate(360deg);} }
 
-  /* Hero Section */
-  header {
-    background: url('https://source.unsplash.com/1600x900/?technology,data') center/cover no-repeat;
-    color: white; text-align: center; padding: 8rem 1rem;
-    position: relative;
-  }
-  header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); }
-  header h1, header p { position: relative; z-index: 1; }
-  header h1 { font-size: 3rem; margin-bottom: 1rem; animation: fadeInDown 1s ease forwards; }
-  header p { font-size: 1.5rem; animation: fadeInUp 1s ease forwards; }
+  /* Header */
+  header { text-align:center; padding:8rem 1rem; position:relative; z-index:2; }
+  header h1 { font-size:3rem; margin-bottom:1rem; background:linear-gradient(90deg,#ff4d6d,#6a11cb); -webkit-background-clip:text; color:transparent; animation: glow 2s ease-in-out infinite alternate; }
+  header p { font-size:1.5rem; color:#aaa; }
 
-  /* Sections */
-  section { max-width: 1000px; margin: 5rem auto; padding: 0 1rem; }
-  .projects, .tech-stack, .working-on, .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+  @keyframes glow { 0%{filter:drop-shadow(0 0 5px #ff4d6d);} 50%{filter:drop-shadow(0 0 20px #6a11cb);} 100%{filter:drop-shadow(0 0 5px #ff4d6d);} }
 
-  /* Card Styles */
-  .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.15); transform: translateY(50px); opacity: 0; transition: 0.5s; }
-  .card img { width: 100%; height: 180px; object-fit: cover; }
-  .card-content { padding: 1rem; }
-  .card-content h3 { color: #6a11cb; margin-top: 0; }
-  .card-content p { font-size: 0.95rem; margin: 0.5rem 0 1rem 0; }
-  .btn { display: inline-block; padding: 0.5rem 1rem; background: linear-gradient(45deg, #6a11cb, #2575fc); color: white; border-radius: 8px; font-weight: 600; transition: 0.3s; }
-  .btn:hover { background: linear-gradient(45deg, #2575fc, #6a11cb); }
+  /* Projects Section */
+  .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; perspective:1000px; }
+  .card { background:#1e1e2f; border-radius:20px; overflow:hidden; width:280px; height:350px; box-shadow:0 0 30px rgba(255,77,109,0.5); transform-style:preserve-3d; transition: transform 0.6s; }
+  .card:hover { transform: rotateY(15deg) rotateX(10deg) scale(1.05); }
+  .card img { width:100%; height:180px; object-fit:cover; border-bottom:2px solid #ff4d6d; animation: spin 20s linear infinite; }
+  @keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+  .card-content { padding:1rem; }
+  .card-content h3 { margin:0; color:#ff4d6d; }
+  .card-content p { font-size:0.9rem; margin:0.5rem 0; color:#ccc; }
+  .btn { display:inline-block; padding:0.5rem 1rem; background:linear-gradient(45deg,#ff4d6d,#6a11cb); border-radius:10px; color:white; font-weight:600; transition:0.3s; }
+  .btn:hover { transform:scale(1.1) rotate(-5deg); }
 
-  /* Tech Stack */
-  .tech { background: #fff; padding: 1rem 1.5rem; border-radius: 50px; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s; text-align:center; }
-  .tech:hover { transform: scale(1.2) rotate(5deg); }
+  /* Tech Stack Floating Icons */
+  .tech-stack { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; }
+  .tech { width:80px; height:80px; border-radius:50%; background:linear-gradient(45deg,#ff4d6d,#6a11cb); display:flex; align-items:center; justify-content:center; font-weight:700; color:white; font-size:0.8rem; box-shadow:0 0 20px rgba(255,77,109,0.5); animation: float 6s ease-in-out infinite; }
 
   /* Working On Tasks */
-  .task { background: #2575fc; color: white; padding: 1rem 2rem; border-radius: 15px; text-align:center; box-shadow: 0 6px 18px rgba(0,0,0,0.15); transition: transform 0.3s; }
-  .task:hover { transform: translateY(-5px) rotate(-2deg); }
+  .working-on { display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; }
+  .task { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; box-shadow:0 0 20px rgba(255,77,109,0.5); font-weight:600; transition:0.3s; }
+  .task:hover { transform:rotate(-5deg) scale(1.05); }
 
-  /* Contact Buttons */
-  .contact a { text-align:center; background: linear-gradient(45deg, #6a11cb, #2575fc); padding: 1rem; border-radius: 10px; font-weight:600; transition: 0.3s; color:white; display:block; }
-  .contact a:hover { background: linear-gradient(45deg, #2575fc, #6a11cb); }
+  /* Contact */
+  .contact { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin-bottom:5rem; }
+  .contact a { background:linear-gradient(45deg,#ff4d6d,#6a11cb); padding:1rem 2rem; border-radius:15px; color:white; font-weight:600; transition:0.3s; }
+  .contact a:hover { transform:scale(1.1) rotate(5deg); }
 
-  /* Footer */
-  footer { text-align: center; padding: 2rem 1rem; background: #333; color: white; margin-top: 3rem; }
-
-  /* Animations */
-  @keyframes fadeInDown { from {opacity:0; transform: translateY(-50px);} to {opacity:1; transform:translateY(0);} }
-  @keyframes fadeInUp { from {opacity:0; transform: translateY(50px);} to {opacity:1; transform:translateY(0);} }
+  footer { text-align:center; padding:2rem; background:#111; color:#fff; }
 
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="#projects">Projects</a>
-  <a href="#tech">Tech Stack</a>
-  <a href="#working">Working On</a>
-  <a href="#contact">Contact</a>
-</nav>
+<!-- Floating shapes -->
+<div class="floating-shape" style="width:100px;height:100px;top:10%;left:20%;background:#ff4d6d;"></div>
+<div class="floating-shape" style="width:150px;height:150px;top:50%;left:70%;background:#6a11cb;"></div>
+<div class="floating-shape" style="width:80px;height:80px;top:70%;left:30%;background:#ff4d6d;"></div>
+<div class="floating-shape" style="width:120px;height:120px;top:20%;left:80%;background:#6a11cb;"></div>
 
 <header>
   <h1>Hi, I'm Alina 👋</h1>
   <p>Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
 </header>
 
-<section id="projects">
+<section>
   <h2>🚀 Projects</h2>
   <div class="projects">
     <div class="card">
       <img src="https://source.unsplash.com/400x200/?data,analytics" alt="Tutoring Tracker">
       <div class="card-content">
         <h3>Tutoring Progress Tracker</h3>
-        <p>Python ETL pipeline for tracking student progress using Google Forms & Sheets.</p>
+        <p>Python ETL pipeline using Google Forms & Sheets.</p>
         <a href="https://github.com/alina951/tutoring-progress-tracker" class="btn">View Repo</a>
       </div>
     </div>
@@ -92,7 +81,7 @@
       <img src="https://source.unsplash.com/400x200/?coffee,shop" alt="Mugshot Coffee">
       <div class="card-content">
         <h3>Mugshot Coffee</h3>
-        <p>AWS ETL pipeline: S3 → Lambda → Redshift → Grafana dashboards.</p>
+        <p>AWS ETL: S3 → Lambda → Redshift → Grafana dashboards.</p>
         <a href="https://github.com/generation-de-nat2/Mugshot-Coffee" class="btn">View Repo</a>
       </div>
     </div>
@@ -100,7 +89,7 @@
       <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
       <div class="card-content">
         <h3>Shape Checker</h3>
-        <p>Interactive geometry app for kids, calculating areas of shapes and polygons.</p>
+        <p>Interactive geometry app for kids.</p>
         <a href="https://github.com/alina951/shape-checker" class="btn">View Repo</a>
       </div>
     </div>
@@ -108,62 +97,28 @@
       <img src="https://source.unsplash.com/400x200/?music,drums" alt="Drumzkit">
       <div class="card-content">
         <h3>Drumzkit</h3>
-        <p>Browser-based drum kit built with HTML, CSS & JavaScript.</p>
+        <p>Browser-based drum kit with HTML, CSS & JS.</p>
         <a href="https://github.com/alina951/drumzkit" class="btn">View Repo</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="tech">
+<section>
   <h2>🧰 Tech Stack</h2>
   <div class="tech-stack">
     <div class="tech">Python</div>
     <div class="tech">SQL</div>
-    <div class="tech">ETL Pipelines</div>
     <div class="tech">AWS</div>
+    <div class="tech">ETL</div>
     <div class="tech">Docker</div>
-    <div class="tech">Pandas/NumPy</div>
-    <div class="tech">Grafana</div>
+    <div class="tech">Pandas</div>
   </div>
 </section>
 
-<section id="working">
+<section>
   <h2>💡 What I'm Working On</h2>
   <div class="working-on">
     <div class="task">BeatFlow Data Project</div>
     <div class="task">Predicting Grades</div>
-    <div class="task">Tutoring Tracker Enhancements</div>
-    <div class="task">Shape Checker Polygons</div>
-    <div class="task">MindMood Metrics</div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>📫 Contact</h2>
-  <div class="contact">
-    <a href="mailto:alina_arus@yahoo.com">Email Me</a>
-    <a href="https://www.linkedin.com/in/alina-arus-6a18a0319">LinkedIn</a>
-  </div>
-</section>
-
-<footer>
-  <p>&copy; 2025 Alina Arus</p>
-</footer>
-
-<script>
-  // Animate cards on scroll
-  const cards = document.querySelectorAll('.card, .tech, .task');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        entry.target.style.transform = 'translateY(0)';
-        entry.target.style.opacity = '1';
-      }
-    });
-  }, { threshold: 0.2 });
-  cards.forEach(card => observer.observe(card));
-</script>
-
-</body>
-</html>
+    <div class="task">Mind
