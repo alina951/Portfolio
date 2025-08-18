@@ -2,268 +2,117 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Alina Arus • Portfolio</title>
-  <meta name="description" content="Alina Arus – Aspiring Data Engineer. Python • SQL • ETL • Cloud. Projects, tech stack and contact." />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alina Arus – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg:#0b0b15;
-      --card:#131327cc; /* 80% glass */
-      --text:#eaeafb;
-      --muted:#b5b6d6;
-      --brand1:#7c4dff;
-      --brand2:#ff4d6d;
-      --accent:#29ffe3;
-      --ring:#ffffff22;
-      --radius:18px;
-      --shadow:0 10px 30px rgba(0,0,0,.45), inset 0 0 0 1px #ffffff10;
+    body { font-family: 'Inter', sans-serif; }
+    .glass {
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      background: radial-gradient(1200px 800px at 70% -10%, #2b2b79 0%, transparent 55%),
-                  radial-gradient(900px 600px at -10% 40%, #5a1f3b 0%, transparent 55%),
-                  var(--bg);
-      color:var(--text);
-      letter-spacing:.2px;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-    }
-
-    /* Accessibility */
-    .skip{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip:focus{left:1rem;top:1rem;width:auto;height:auto;padding:.6rem 1rem;background:#000;color:#fff;border-radius:10px;z-index:1000}
-
-    /* Fancy container + subtle grid */
-    .page{max-width:1100px;margin:0 auto;padding:24px}
-    .grid-overlay{
-      position:fixed;inset:0;pointer-events:none;opacity:.06;
-      background:
-        linear-gradient(0deg, transparent 24px, #fff 25px, #fff 26px, transparent 27px),
-        linear-gradient(90deg, transparent 24px, #fff 25px, #fff 26px, transparent 27px);
-      background-size:26px 26px;
-      mask: radial-gradient(650px 650px at 50% 10%, #000 40%, transparent 80%);
-    }
-
-    header{
-      position:relative;
-      padding:12vh 0 6vh;
-      text-align:center;
-      isolation:isolate;
-    }
-    .halo{
-      position:absolute;inset:auto 0 -120px 0;margin:auto;width:800px;height:240px;filter:blur(60px);opacity:.7;z-index:-1;
-      background: conic-gradient(from 180deg, var(--brand1), var(--brand2), var(--accent), var(--brand1));
-      transform:perspective(900px) rotateX(65deg) scale(1.1);
-      mask: radial-gradient(50% 60% at 50% 40%, #000 55%, transparent 70%);
-    }
-    h1{
-      font-size: clamp(2.4rem, 6vw, 4.2rem);
-      line-height:1.05;
-      margin:0 0 .6rem;
-      letter-spacing:.5px;
-      background:linear-gradient(90deg,var(--brand2),var(--brand1) 40%, var(--accent));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-shadow:0 0 30px #ffffff10;
-    }
-    .tagline{font-size: clamp(1rem, 2.6vw, 1.35rem); color:var(--muted)}
-
-    nav{
-      position:sticky;top:0;z-index:50;backdrop-filter: blur(8px);
-      background:#0b0b15cc;border-bottom:1px solid #ffffff12
-    }
-    .nav-inner{max-width:1100px;margin:0 auto;padding:10px 24px;display:flex;gap:10px;align-items:center;justify-content:center;flex-wrap:wrap}
-    .chip{
-      --_bg: linear-gradient(180deg, #ffffff12, #ffffff05);
-      display:inline-flex;align-items:center;gap:.6rem;padding:.55rem .9rem;border-radius:999px;
-      border:1px solid #ffffff18;background:var(--_bg); box-shadow: var(--shadow);
-      text-decoration:none;color:var(--text);font-weight:600;font-size:.92rem;
-      transition: transform .2s ease, border-color .2s ease;
-    }
-    .chip:hover{ transform: translateY(-2px); border-color:#ffffff40 }
-
-    section{padding:64px 0}
-    section h2{font-size: clamp(1.4rem, 2.8vw, 1.8rem); letter-spacing:.6px; margin:0 0 18px;}
-    .muted{color:var(--muted)}
-
-    /* Cards layout */
-    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
-    .card{
-      position:relative;overflow:hidden;border-radius:var(--radius);
-      background: linear-gradient(180deg, #ffffff12, #ffffff05);
-      border:1px solid #ffffff18; box-shadow: var(--shadow);
-      padding:18px; transition: transform .35s ease, border-color .2s ease;
-    }
-    .card:hover{ transform: translateY(-6px); border-color:#ffffff44 }
-
-    .card .title{font-weight:800; letter-spacing:.3px; margin-bottom:6px}
-    .card .desc{color:var(--muted); font-size:.98rem}
-
-    .badges{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 14px}
-    .badge{font-size:.75rem;border:1px solid #ffffff22;border-radius:999px;padding:.25rem .55rem;background:#ffffff0c}
-
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{
-      --_fx: linear-gradient(90deg, var(--brand2), var(--brand1));
-      display:inline-flex;align-items:center;gap:.55rem;border-radius:12px;
-      padding:.6rem .85rem;text-decoration:none;color:var(--text);font-weight:700;
-      border:1px solid #ffffff22; background: linear-gradient(#ffffff0f, #ffffff08), var(--_fx);
-      background-size:100% 100%, 200% 100%;
-      transition: background-position .5s ease, transform .2s ease, box-shadow .2s ease;
-      box-shadow: var(--shadow);
-    }
-    .btn:hover{ background-position:100% 0, 0 0; transform: translateY(-2px) }
-    .btn.ghost{background:linear-gradient(#ffffff08, #ffffff03); font-weight:600}
-
-    /* Tech bubbles */
-    .tech{display:flex;flex-wrap:wrap;gap:12px}
-    .pill{padding:.55rem .8rem;border-radius:999px;border:1px solid #ffffff22;background:linear-gradient(180deg,#ffffff12,#ffffff05);box-shadow:var(--shadow);font-weight:700}
-
-    /* Working on – timeline */
-    .timeline{display:grid;gap:14px}
-    .tick{
-      display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:start
-    }
-    .dot{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 30%, var(--accent), var(--brand1));box-shadow:0 0 14px #29ffe3aa}
-    .tick p{margin:0}
-
-    /* Contact row */
-    .contact{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-
-    /* Footer */
-    footer{padding:50px 0;color:var(--muted);text-align:center}
-
-    /* Focus styles */
-    :where(a, button, .chip, .btn):focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-
-    /* Motion preference */
-    @media (prefers-reduced-motion: reduce){
-      .card, .btn{transition:none}
-      .halo{display:none}
-    }
+    .typed-cursor { color: #6366f1; font-weight: bold; }
   </style>
 </head>
-<body>
-  <a class="skip" href="#main">Skip to content</a>
-  <div class="grid-overlay" aria-hidden="true"></div>
+<body class="bg-gradient-to-tr from-gray-900 via-gray-800 to-black text-white">
 
-  <nav>
-    <div class="nav-inner">
-      <a class="chip" href="#projects">Projects</a>
-      <a class="chip" href="#stack">Tech Stack</a>
-      <a class="chip" href="#now">What I'm Working On</a>
-      <a class="chip" href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <header>
-    <div class="halo" aria-hidden="true"></div>
-    <h1>Hi, I'm Alina<span aria-hidden="true"> ✨</span></h1>
-    <p class="tagline">Aspiring Data Engineer • Python · SQL · ETL · Cloud</p>
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full z-50 bg-black/30 backdrop-blur-md shadow-lg">
+    <nav class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-2xl font-bold text-indigo-400">Alina Arus</h1>
+      <ul class="hidden md:flex space-x-8 font-medium">
+        <li><a href="#projects" class="hover:text-indigo-400 transition">Projects</a></li>
+        <li><a href="#stack" class="hover:text-indigo-400 transition">Tech Stack</a></li>
+        <li><a href="#current" class="hover:text-indigo-400 transition">Now</a></li>
+        <li><a href="#contact" class="hover:text-indigo-400 transition">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <main id="main" class="page">
-    <!-- Projects -->
-    <section id="projects">
-      <h2>🚀 Projects</h2>
-      <p class="muted" style="margin:0 0 18px">No stock images. Just the work.</p>
-      <div class="cards">
-        <!-- Tutoring Progress Tracker -->
-        <article class="card" aria-labelledby="p1-title">
-          <div class="badges">
-            <span class="badge">Python</span>
-            <span class="badge">ETL</span>
-            <span class="badge">Google Sheets API</span>
-          </div>
-          <h3 class="title" id="p1-title">Tutoring Progress Tracker</h3>
-          <p class="desc">Automated pipeline that ingests Google Forms responses → cleans & flags records in Sheets → generates progress views for each student.</p>
-          <div class="actions">
-            <a class="btn" href="https://github.com/alina951/tutoring-progress-tracker" target="_blank" rel="noreferrer">View Repo</a>
-          </div>
-        </article>
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center items-center text-center px-6">
+    <h2 class="text-4xl md:text-6xl font-extrabold mb-4">Hi, I’m <span class="text-indigo-400">Alina</span></h2>
+    <h3 class="text-xl md:text-2xl text-gray-300 mb-6">
+      <span id="typed"></span>
+    </h3>
+    <a href="#projects" class="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-full shadow-lg font-semibold transition">See My Work</a>
+  </section>
 
-        <!-- Mugshot Coffee -->
-        <article class="card" aria-labelledby="p2-title">
-          <div class="badges">
-            <span class="badge">AWS</span>
-            <span class="badge">S3 → Lambda → Redshift</span>
-            <span class="badge">Dashboards</span>
-          </div>
-          <h3 class="title" id="p2-title">Mugshot Coffee</h3>
-          <p class="desc">Batch ETL on coffee orders. Landing in S3, transforms in Lambda, warehoused in Redshift and visualised on Grafana.</p>
-          <div class="actions">
-            <a class="btn" href="https://github.com/generation-de-nat2/Mugshot-Coffee" target="_blank" rel="noreferrer">View Repo</a>
-          </div>
-        </article>
-
-        <!-- Drumzkit -->
-        <article class="card" aria-labelledby="p3-title">
-          <div class="badges">
-            <span class="badge">HTML</span>
-            <span class="badge">CSS</span>
-            <span class="badge">JavaScript</span>
-          </div>
-          <h3 class="title" id="p3-title">Drumzkit</h3>
-          <p class="desc">Playful browser kit. Mapped keyboard events trigger layered sounds and visual feedback for timing practice.</p>
-          <div class="actions">
-            <a class="btn" href="https://github.com/alina951/drumzkit" target="_blank" rel="noreferrer">View Repo</a>
-          </div>
-        </article>
+  <!-- Projects -->
+  <section id="projects" class="max-w-6xl mx-auto px-6 py-24">
+    <h2 class="text-3xl font-bold mb-12 text-center">Projects</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project Card -->
+      <div class="glass p-6 hover:scale-105 transition-transform">
+        <h3 class="text-xl font-semibold mb-2">Tutoring Progress Tracker</h3>
+        <p class="text-gray-300 mb-4">Automated progress tracking tool with Google Sheets + Python for seamless tutoring records.</p>
+        <a href="https://github.com/alina951/Tutoring-progress-tracker" class="text-indigo-400 font-semibold hover:underline">View Code →</a>
       </div>
-    </section>
-
-    <!-- Tech Stack -->
-    <section id="stack">
-      <h2>🧰 Tech Stack</h2>
-      <div class="tech" aria-label="Technologies I use">
-        <span class="pill">Python</span>
-        <span class="pill">SQL</span>
-        <span class="pill">Pandas</span>
-        <span class="pill">AWS</span>
-        <span class="pill">ETL</span>
-        <span class="pill">Docker</span>
-        <span class="pill">Git</span>
+      <div class="glass p-6 hover:scale-105 transition-transform">
+        <h3 class="text-xl font-semibold mb-2">MindMood Metrics</h3>
+        <p class="text-gray-300 mb-4">Social listening + NLP project analyzing Reddit discussions on mental health.</p>
+        <a href="#" class="text-indigo-400 font-semibold hover:underline">View Code →</a>
       </div>
-    </section>
-
-    <!-- Working on -->
-    <section id="now">
-      <h2>💡 What I'm Working On</h2>
-      <div class="timeline">
-        <div class="tick"><span class="dot" aria-hidden="true"></span><p><strong>BeatFlow Data Project:</strong> streaming-friendly ingestion pattern for event data with compacted topics.</p></div>
-        <div class="tick"><span class="dot" aria-hidden="true"></span><p><strong>Predicting Grades:</strong> baseline model in Python with feature store experiments.</p></div>
-        <div class="tick"><span class="dot" aria-hidden="true"></span><p><strong>MindMood Metrics:</strong> social listening on Reddit with sentiment & topic models.</p></div>
+      <div class="glass p-6 hover:scale-105 transition-transform">
+        <h3 class="text-xl font-semibold mb-2">Shape Checker</h3>
+        <p class="text-gray-300 mb-4">Interactive web app teaching children geometry and area calculation.</p>
+        <a href="#" class="text-indigo-400 font-semibold hover:underline">View Code →</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>📫 Contact</h2>
-      <div class="contact">
-        <a class="btn" href="mailto:alina_arus@yahoo.com">Email Me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/alina-arus-6a18a0319" target="_blank" rel="noreferrer">LinkedIn</a>
-        <button class="btn" id="copy" type="button" aria-live="polite">Copy Email</button>
-      </div>
-    </section>
-  </main>
+  <!-- Tech Stack -->
+  <section id="stack" class="bg-black/40 py-24 px-6">
+    <h2 class="text-3xl font-bold mb-12 text-center">Tech Stack</h2>
+    <div class="flex flex-wrap justify-center gap-4">
+      <span class="glass px-4 py-2">Python</span>
+      <span class="glass px-4 py-2">SQL</span>
+      <span class="glass px-4 py-2">Google Cloud</span>
+      <span class="glass px-4 py-2">GitHub</span>
+      <span class="glass px-4 py-2">React</span>
+      <span class="glass px-4 py-2">VS Code</span>
+    </div>
+  </section>
 
-  <footer>
-    <small>© 2025 Alina Arus</small>
-  </footer>
+  <!-- Currently Working On -->
+  <section id="current" class="max-w-5xl mx-auto px-6 py-24">
+    <h2 class="text-3xl font-bold mb-12 text-center">What I’m Working On</h2>
+    <div class="glass p-8 text-center">
+      <p class="text-gray-300 text-lg">Exploring Data Engineering pipelines and advanced NLP for social listening projects, while building interactive web apps that make learning fun and accessible.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="bg-black/40 py-24 px-6 text-center">
+    <h2 class="text-3xl font-bold mb-6">Contact</h2>
+    <p class="mb-6 text-gray-300">Let’s build something amazing together.</p>
+    <button onclick="copyEmail()" class="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-full shadow-lg font-semibold transition">Copy Email</button>
+    <p id="copy-msg" class="text-sm text-green-400 mt-2 hidden">Email copied!</p>
+  </section>
+
+  <footer class="text-center text-gray-400 py-6 border-t border-gray-700">© 2025 Alina Arus</footer>
 
   <script>
-    // tiny enhancement: copy email
-    const copyBtn = document.getElementById('copy');
-    copyBtn?.addEventListener('click', async () => {
-      const email = 'alina_arus@yahoo.com';
-      try{ await navigator.clipboard.writeText(email); copyBtn.textContent = 'Copied ✔'; }
-      catch{ copyBtn.textContent = email; }
-      setTimeout(()=> copyBtn.textContent = 'Copy Email', 2000);
+    new Typed('#typed', {
+      strings: ["Data Engineer.", "Python Developer.", "Tutor.", "ML Enthusiast."],
+      typeSpeed: 70,
+      backSpeed: 50,
+      loop: true
     });
+
+    function copyEmail() {
+      navigator.clipboard.writeText("alina@example.com");
+      document.getElementById("copy-msg").classList.remove("hidden");
+      setTimeout(() => {
+        document.getElementById("copy-msg").classList.add("hidden");
+      }, 2000);
+    }
   </script>
 </body>
 </html>
+
