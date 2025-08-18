@@ -1,149 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alina – Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Alina Arus — Data Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #f5f5f5;
-      --text: #111;
-      --card: rgba(255, 255, 255, 0.6);
-      --glass-border: rgba(255,255,255,0.3);
+    :root{
+      --bg:#0b1020; --card:#0f1724; --muted:#9aa4bf; --accent1:#7c3aed; --accent2:#ff5c7c; --glass:rgba(255,255,255,0.03);
+      --glass-border:rgba(255,255,255,0.06);
     }
-    [data-theme="dark"] {
-      --bg: #0e0e0e;
-      --text: #f5f5f5;
-      --card: rgba(20,20,20,0.7);
-      --glass-border: rgba(255,255,255,0.1);
-    }
-    body {
-      margin:0; font-family: 'Segoe UI', sans-serif; background: var(--bg); color: var(--text);
-      transition: background .4s, color .4s;
-    }
-    header {
-      height: 100vh; display:flex; flex-direction:column; justify-content:center; align-items:center;
-      text-align:center; padding:2rem;
-    }
-    header h1 {
-      font-size:3rem; font-weight:700; background: linear-gradient(45deg,#ff6ec4,#7873f5,#4ade80);
-      -webkit-background-clip:text; color:transparent; animation: gradientMove 6s ease infinite;
-      background-size: 300% 300%;
-    }
-    @keyframes gradientMove {0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-    .typed { font-size:1.3rem; margin-top:1rem; }
-    .btn { padding:0.6rem 1.2rem; border-radius:30px; border:none; cursor:pointer; font-weight:600; margin:1rem; }
-    .btn-primary { background:#4ade80; color:#fff; }
-    .btn-outline { background:transparent; border:2px solid var(--text); color:var(--text); }
-    
-    section { padding:5rem 2rem; max-width:1200px; margin:auto; }
-    .grid { display:grid; gap:2rem; }
-    .projects { grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); }
-    .card {
-      backdrop-filter: blur(12px); background: var(--card); border:1px solid var(--glass-border);
-      padding:1.5rem; border-radius:20px; transition: transform .3s ease;
-    }
-    .card:hover { transform: translateY(-10px); }
-    .card h3 { margin:0.5rem 0; }
-    .skills { grid-template-columns: repeat(auto-fit,minmax(100px,1fr)); text-align:center; }
-    .skills i { font-size:2rem; margin-bottom:0.5rem; }
-    .timeline { border-left:3px solid var(--text); padding-left:1.5rem; }
-    .timeline-item { margin-bottom:2rem; }
-    footer { text-align:center; padding:2rem; }
-    .theme-toggle { position:fixed; top:1rem; right:1rem; cursor:pointer; font-size:1.5rem; }
+    [data-theme='light']{--bg:#f6f7fb; --card:#ffffff; --muted:#475569; --accent1:#5b21b6; --accent2:#ef4444; --glass:rgba(0,0,0,0.02); --glass-border:rgba(0,0,0,0.05)}
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;color:#e6eef8;background:radial-gradient(1200px 600px at 10% 10%, #081028 0%, transparent 20%), var(--bg);-webkit-font-smoothing:antialiased}
+
+    /* NAV */
+    .nav{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:60;width:calc(100% - 48px);max-width:1100px;display:flex;align-items:center;justify-content:space-between;padding:10px;border-radius:14px;background:linear-gradient(180deg,var(--glass),transparent);border:1px solid var(--glass-border);backdrop-filter:blur(8px)}
+    .logo{display:flex;gap:12px;align-items:center}
+    .logo .mark{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:grid;place-items:center;font-weight:800;color:white}
+    .nav .links{display:flex;gap:18px}
+    .nav a{color:var(--muted);text-decoration:none;font-weight:600}
+    .nav a.active, .nav a:hover{color:white}
+    .theme-toggle{padding:8px;border-radius:10px;border:1px solid var(--glass-border);background:transparent;cursor:pointer}
+
+    /* HERO */
+    header{min-height:84vh;display:grid;grid-template-columns:1fr;align-items:center;padding:84px 24px 40px}
+    .hero{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    .intro h1{font-size:clamp(2.2rem,5vw,3.4rem);margin:0 0 12px;line-height:1.02;background:linear-gradient(90deg,var(--accent2),var(--accent1));-webkit-background-clip:text;color:transparent}
+    .intro p.lead{color:var(--muted);margin:0 0 20px;font-size:1.05rem}
+    .cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{padding:10px 16px;border-radius:10px;border:1px solid var(--glass-border);cursor:pointer;font-weight:700;background:linear-gradient(90deg,#ffffff06,#ffffff02)}
+    .btn.primary{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;border:none;box-shadow:0 8px 30px rgba(124,58,237,0.12);}
+
+    /* SIDE PANEL */
+    .panel{background:linear-gradient(180deg,var(--card),rgba(0,0,0,0.02));padding:20px;border-radius:14px;border:1px solid var(--glass-border)}
+    .avatar{width:100%;height:220px;border-radius:8px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:white}
+    .small{font-size:.92rem;color:var(--muted)}
+
+    /* SECTIONS */
+    section{max-width:1100px;margin:0 auto;padding:56px 24px}
+    h2{color:white;margin:0 0 18px;font-size:1.5rem}
+
+    /* PROJECT GRID */
+    .projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+    .proj{position:relative;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.02));border:1px solid var(--glass-border);transition:transform .35s ease, box-shadow .35s ease}
+    .proj:hover{transform:translateY(-10px);box-shadow:0 20px 40px rgba(2,6,23,0.6)}
+    .proj .meta{display:flex;justify-content:space-between;gap:12px;align-items:center}
+    .proj h3{margin:10px 0 6px}
+    .badges{display:flex;gap:8px;flex-wrap:wrap}
+    .badge{background:linear-gradient(90deg,#00000020,#ffffff06);padding:6px 10px;border-radius:999px;font-weight:700;color:var(--muted);font-size:.8rem}
+    .proj p{color:var(--muted);font-size:.95rem}
+    .proj .actions{display:flex;gap:10px;margin-top:12px}
+    .link{font-weight:700;color:var(--accent1);text-decoration:none}
+
+    /* FILTER */
+    .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--glass-border);background:transparent;cursor:pointer;color:var(--muted);font-weight:700}
+    .chip.active{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;border:none}
+
+    /* STACK */
+    .stack{display:flex;flex-wrap:wrap;gap:12px}
+    .tech{padding:10px 12px;border-radius:10px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--glass-border);font-weight:700;color:var(--muted)}
+
+    /* TIMELINE */
+    .timeline{position:relative;padding-left:18px;border-left:2px dashed var(--glass-border)}
+    .timeline-item{margin:18px 0;padding-left:18px}
+    .timeline-item strong{display:block}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    .contact-card{padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--glass-border)}
+    .input,textarea{width:100%;padding:10px;border-radius:8px;border:1px solid var(--glass-border);background:transparent;color:inherit}
+    .submit{margin-top:10px}
+
+    /* FOOTER */
+    footer{text-align:center;padding:36px 12px;color:var(--muted)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}.nav{left:8px;right:8px;transform:none}}
   </style>
 </head>
 <body>
-  <div class="theme-toggle" onclick="toggleTheme()"><i class="fas fa-moon"></i></div>
+
+  <div class="nav" role="navigation">
+    <div class="logo">
+      <div class="mark">AA</div>
+      <div>
+        <div style="font-weight:800">Alina Arus</div>
+        <div style="font-size:.82rem;color:var(--muted)">Data Engineer • Python • ETL</div>
+      </div>
+    </div>
+
+    <div class="links">
+      <a href="#projects">Projects</a>
+      <a href="#stack">Stack</a>
+      <a href="#timeline">Experience</a>
+      <a href="#contact">Contact</a>
+      <button class="theme-toggle" aria-label="Toggle theme" id="themeBtn">🌙</button>
+    </div>
+  </div>
 
   <header>
-    <h1>Hi, I'm Alina 👩‍💻</h1>
-    <p class="typed" id="typed"></p>
-    <div>
-      <button class="btn btn-primary">View Projects</button>
-      <button class="btn btn-outline">Download CV</button>
+    <div class="hero">
+      <div class="intro">
+        <h1>Hi — I'm <span style="color:var(--accent2)">Alina</span>,
+          <br><span style="font-weight:700;display:inline-block">building reliable data pipelines and delightful tools</span>
+        </h1>
+        <p class="lead">I combine Python, cloud tools and pragmatic engineering to move data from source to insight. I focus on clean ETL, automation, and practical ML prototypes.</p>
+        <div class="cta">
+          <a class="btn primary" href="#projects">See Projects</a>
+          <a class="btn" href="#contact">Hire / Contact</a>
+          <a class="btn" href="https://github.com/alina951" target="_blank">GitHub</a>
+        </div>
+
+        <div style="margin-top:22px">
+          <div class="filters" id="filters">
+            <button class="chip active" data-filter="all">All</button>
+            <button class="chip" data-filter="python">Python</button>
+            <button class="chip" data-filter="aws">AWS</button>
+            <button class="chip" data-filter="frontend">Frontend</button>
+            <button class="chip" data-filter="etl">ETL</button>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="panel">
+        <div class="avatar">AA</div>
+        <div style="margin-top:12px">
+          <div class="small">Aspiring Data Engineer</div>
+          <div style="font-weight:800;margin-top:6px">Alina Arus</div>
+          <div style="margin-top:10px;color:var(--muted);font-size:.95rem">Email: <a class="link" href="mailto:alina_arus@yahoo.com">alina_arus@yahoo.com</a></div>
+        </div>
+
+        <div style="margin-top:16px">
+          <div style="font-weight:700;margin-bottom:8px">Tech highlights</div>
+          <div class="stack">
+            <div class="tech">Python</div>
+            <div class="tech">SQL</div>
+            <div class="tech">AWS</div>
+            <div class="tech">Docker</div>
+          </div>
+        </div>
+      </aside>
     </div>
   </header>
 
-  <section>
-    <h2>🚀 Projects</h2>
-    <div class="grid projects">
-      <div class="card">
-        <h3>Mugshot Café</h3>
-        <p>A modern coffee ordering app with live price calculation.</p>
-        <a href="#" class="btn btn-outline">Code</a>
-        <a href="#" class="btn btn-primary">Demo</a>
-      </div>
-      <div class="card">
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects" id="projectsGrid">
+
+      <article class="proj" data-tags="python etl">
+        <div class="meta"><div class="small">2024</div><div class="small">ETL • Sheets</div></div>
         <h3>Tutoring Progress Tracker</h3>
-        <p>Google Sheets + Python pipeline to track student growth.</p>
-        <a href="#" class="btn btn-outline">Code</a>
-      </div>
-      <div class="card">
-        <h3>Shape Checker</h3>
-        <p>Interactive learning tool for kids to calculate shape areas.</p>
-        <a href="#" class="btn btn-outline">Code</a>
-        <a href="#" class="btn btn-primary">Demo</a>
-      </div>
+        <p>Automated pipeline: Google Forms → Sheets → Python cleaning → flags & progress reports. Practical monitoring for tutors.</p>
+        <div class="badges"><span class="badge">Python</span><span class="badge">Google Sheets API</span><span class="badge">ETL</span></div>
+        <div class="actions"><a class="link" href="https://github.com/alina951/tutoring-progress-tracker" target="_blank">View Code</a></div>
+      </article>
+
+      <article class="proj" data-tags="aws etl">
+        <div class="meta"><div class="small">2023</div><div class="small">AWS • Redshift</div></div>
+        <h3>Mugshot Coffee (ETL)</h3>
+        <p>Batch pipeline: S3 landing → Lambda transforms → Redshift warehouse → Grafana dashboards for sales insights.</p>
+        <div class="badges"><span class="badge">AWS</span><span class="badge">Redshift</span><span class="badge">S3</span></div>
+        <div class="actions"><a class="link" href="#">Case Study</a></div>
+      </article>
+
+      <article class="proj" data-tags="frontend">
+        <div class="meta"><div class="small">2022</div><div class="small">Vanilla JS</div></div>
+        <h3>Drumzkit</h3>
+        <p>Browser-based drum kit with keyboard mapping, audio layering and latency-tuned interactions for practice.</p>
+        <div class="badges"><span class="badge">HTML</span><span class="badge">JS</span></div>
+        <div class="actions"><a class="link" href="https://github.com/alina951/drumzkit" target="_blank">View Code</a></div>
+      </article>
+
+      <article class="proj" data-tags="python ml">
+        <div class="meta"><div class="small">2024</div><div class="small">NLP • Reddit</div></div>
+        <h3>MindMood Metrics</h3>
+        <p>Social-listening pipeline that pulls Reddit data, applies sentiment analysis and topic models to monitor mental health signals.</p>
+        <div class="badges"><span class="badge">NLP</span><span class="badge">Pandas</span><span class="badge">PRAW</span></div>
+        <div class="actions"><a class="link" href="#">Read Case Study</a></div>
+      </article>
+
     </div>
   </section>
 
-  <section>
-    <h2>🛠 Skills</h2>
-    <div class="grid skills">
-      <div><i class="fab fa-python"></i><p>Python</p></div>
-      <div><i class="fab fa-react"></i><p>React</p></div>
-      <div><i class="fas fa-database"></i><p>SQL</p></div>
-      <div><i class="fab fa-git-alt"></i><p>Git</p></div>
+  <section id="stack">
+    <h2>Tech Stack</h2>
+    <div class="stack" style="margin-top:12px">
+      <div class="tech">Python</div>
+      <div class="tech">SQL</div>
+      <div class="tech">AWS</div>
+      <div class="tech">Pandas</div>
+      <div class="tech">Docker</div>
+      <div class="tech">Git</div>
     </div>
   </section>
 
-  <section>
-    <h2>💼 Experience</h2>
+  <section id="timeline">
+    <h2>Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>Data Engineering Trainee</h3>
-        <p>Randstad Technologies – 2024</p>
-        <p>Built ETL pipelines, automated reporting, and optimized queries.</p>
+        <strong>Data Engineering Trainee — Randstad Technologies</strong>
+        <div class="small">2024 • Contract</div>
+        <p class="small">Built ETL workflows and automated reporting; optimised data pipelines and reduced job runtimes.</p>
       </div>
       <div class="timeline-item">
-        <h3>BTS Field Engineer</h3>
-        <p>Wireless Communications – 2020</p>
-        <p>Worked on telecom infrastructure, ensuring high network availability.</p>
+        <strong>BTS Field Engineer — Wireless Comms</strong>
+        <div class="small">2018–2021</div>
+        <p class="small">Worked on telecom infrastructure, maintenance and performance verification on base transceiver stations.</p>
       </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-grid">
+      <form class="contact-card" onsubmit="handleSubmit(event)">
+        <label class="small">Your name</label>
+        <input class="input" name="name" required />
+        <label class="small" style="margin-top:10px">Message</label>
+        <textarea class="input" name="message" rows="5" required></textarea>
+        <button class="btn primary submit" type="submit">Send message</button>
+      </form>
+
+      <aside class="contact-card">
+        <div style="font-weight:800">Get in touch</div>
+        <div style="margin-top:8px;color:var(--muted)">alina_arus@yahoo.com</div>
+        <div style="margin-top:12px">
+          <a class="link" href="https://github.com/alina951" target="_blank">GitHub</a> •
+          <a class="link" href="https://www.linkedin.com/in/alina-arus-6a18a0319" target="_blank">LinkedIn</a>
+        </div>
+        <div style="margin-top:18px;color:var(--muted)">Download CV: <a class="link" href="#">PDF</a></div>
+      </aside>
     </div>
   </section>
 
   <footer>
-    <p>📧 <span id="email">alina@example.com</span> <button onclick="copyEmail()">Copy</button></p>
-    <p>
-      <a href="https://github.com/alina951" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
-    </p>
-    <p>© 2025 Alina</p>
+    <div class="small">© 2025 Alina Arus — Built for clarity & impact</div>
   </footer>
 
   <script>
-    // Typed effect
-    const typedText = ["Aspiring Data Engineer", "Electronics Engineer", "Passionate Tutor", "Tech Explorer"];
-    let i=0;
-    function type(){
-      let text = typedText[i];
-      let j=0;
-      const interval = setInterval(()=>{
-        document.getElementById("typed").textContent = text.slice(0, j++);
-        if(j>text.length){clearInterval(interval);setTimeout(()=>{i=(i+1)%typedText.length;type();},1500)}
-      },100);
-    } type();
+    // THEME
+    const themeBtn = document.getElementById('themeBtn');
+    const current = localStorage.getItem('theme');
+    if(current === 'light') document.documentElement.setAttribute('data-theme','light');
+    themeBtn.addEventListener('click', ()=>{
+      const now = document.documentElement.getAttribute('data-theme') === 'light' ? '' : 'light';
+      document.documentElement.setAttribute('data-theme', now);
+      localStorage.setItem('theme', now === 'light' ? 'light' : 'dark');
+    });
 
-    function toggleTheme(){
-      document.body.dataset.theme = document.body.dataset.theme === "dark" ? "" : "dark";
+    // FILTERS
+    document.querySelectorAll('.chip').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        document.querySelectorAll('.proj').forEach(p=>{
+          if(f==='all') p.style.display='block';
+          else p.style.display = p.dataset.tags.includes(f) ? 'block' : 'none';
+        });
+      });
+    });
+
+    // Small form handler (no backend) — copies message to clipboard for you
+    function handleSubmit(e){
+      e.preventDefault();
+      const form = e.target;
+      const name = form.name.value.trim();
+      const msg = form.message.value.trim();
+      const payload = `From: ${name}
+
+${msg}`;
+      navigator.clipboard.writeText(payload).then(()=>{
+        alert('Message copied to clipboard — paste into email to send.');
+        form.reset();
+      },()=>{alert('Unable to copy. Please email directly.');});
     }
-    function copyEmail(){
-      navigator.clipboard.writeText(document.getElementById("email").innerText);
-      alert("Email copied!");
-    }
+
+    // Small reveal on scroll
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(en=>{
+        if(en.isIntersecting) en.target.style.transform = 'translateY(0)';
+      });
+    },{threshold:0.08});
+    document.querySelectorAll('.proj, .card, section').forEach(el=>{el.style.transform='translateY(12px)';el.style.transition='transform .6s cubic-bezier(.2,.9,.3,1)';obs.observe(el)});
   </script>
 </body>
 </html>
