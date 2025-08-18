@@ -9,24 +9,17 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body, html { font-family:'Poppins', sans-serif; background:#0f0f1e; color:#fff; overflow-x:hidden; scroll-behavior:smooth; }
 
-  /* Particle background */
-  #particles { position:fixed; width:100%; height:100%; top:0; left:0; z-index:0; }
-
-  a { text-decoration:none; color:inherit; }
-  h2 { text-align:center; font-size:2.5rem; margin:2rem 0; position:relative; }
-  h2::after { content:''; display:block; width:80px; height:4px; background:#ff4d6d; margin:0.5rem auto 0; border-radius:2px; }
-
+  /* Header */
   header { text-align:center; padding:10vh 2rem; position:relative; z-index:2; }
   header h1 { font-size:3.5rem; background:linear-gradient(90deg,#ff4d6d,#6a11cb); -webkit-background-clip:text; color:transparent; animation: glow 2s ease-in-out infinite alternate; }
   header p { font-size:1.5rem; color:#f0f0f0; margin-top:0.5rem; }
-
   @keyframes glow { 0%{text-shadow:0 0 10px #ff4d6d;} 50%{text-shadow:0 0 30px #6a11cb;} 100%{text-shadow:0 0 10px #ff4d6d;} }
 
-  /* Projects */
+  /* Projects Section */
   .projects { display:flex; flex-wrap:wrap; justify-content:center; gap:2rem; padding:2rem 1rem; perspective:1500px; z-index:2; position:relative; }
-  .card { width:300px; height:380px; background:#1e1e2f; border-radius:20px; overflow:hidden; box-shadow:0 0 40px rgba(255,77,109,0.6); transform-style:preserve-3d; transition:transform 0.6s; cursor:pointer; }
+  .card { width:300px; height:400px; background:#1e1e2f; border-radius:20px; overflow:hidden; box-shadow:0 0 40px rgba(255,77,109,0.6); transform-style:preserve-3d; transition:transform 0.6s; cursor:pointer; }
   .card:hover { transform: rotateY(15deg) rotateX(10deg) scale(1.05); }
-  .card img { width:100%; height:180px; object-fit:cover; border-bottom:2px solid #ff4d6d; transition:0.5s; }
+  .card img { width:100%; height:200px; object-fit:cover; border-bottom:2px solid #ff4d6d; }
   .card-content { padding:1rem; }
   .card-content h3 { color:#ff4d6d; margin-bottom:0.5rem; }
   .card-content p { color:#ccc; font-size:0.9rem; }
@@ -55,8 +48,6 @@
 </head>
 <body>
 
-<canvas id="particles"></canvas>
-
 <header>
   <h1>Hi, I'm Alina 👋</h1>
   <p>Aspiring Data Engineer • Python | SQL | ETL | Cloud</p>
@@ -66,7 +57,7 @@
   <h2>🚀 Projects</h2>
   <div class="projects">
     <div class="card">
-      <img src="<img src="images/tutoring-tracker.jpg.jpg"" alt="Tutoring Tracker">
+      <img src="images/tutoring-tracker.jpg" alt="Tutoring Tracker">
       <div class="card-content">
         <h3>Tutoring Progress Tracker</h3>
         <p>Python ETL pipeline using Google Forms & Sheets.</p>
@@ -74,7 +65,7 @@
       </div>
     </div>
     <div class="card">
-      <img src="images/mugshot-coffee.jpg" alt="Mugshot Coffee">" alt="Mugshot Coffee">
+      <img src="images/mugshot-coffee.jpg" alt="Mugshot Coffee">
       <div class="card-content">
         <h3>Mugshot Coffee</h3>
         <p>AWS ETL: S3 → Lambda → Redshift → Grafana dashboards.</p>
@@ -82,15 +73,7 @@
       </div>
     </div>
     <div class="card">
-      <img src="https://source.unsplash.com/400x200/?geometry,math" alt="Shape Checker">
-      <div class="card-content">
-        <h3>Shape Checker</h3>
-        <p>Interactive geometry app for kids.</p>
-        <a href="https://github.com/alina951/shape-checker" class="btn" target="_blank">View Repo</a>
-      </div>
-    </div>
-    <div class="card">
-      <img src="images/drumzkit.jpg" alt="Drumzkit">" alt="Drumzkit">
+      <img src="images/drumzkit.jpg" alt="Drumzkit">
       <div class="card-content">
         <h3>Drumzkit</h3>
         <p>Browser-based drum kit with HTML, CSS & JS.</p>
@@ -132,46 +115,6 @@
 <footer>
   <p>&copy; 2025 Alina Arus</p>
 </footer>
-
-<script>
-  // Particles.js effect
-  const canvas = document.getElementById('particles');
-  const ctx = canvas.getContext('2d');
-  let particlesArray;
-  function initParticles(){
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    particlesArray = [];
-    for(let i=0;i<100;i++){
-      particlesArray.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        size:Math.random()*3+1,
-        speedX:(Math.random()-0.5)*1,
-        speedY:(Math.random()-0.5)*1
-      });
-    }
-  }
-  function animateParticles(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particlesArray.forEach(p=>{
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
-      ctx.fillStyle='rgba(255,77,109,0.5)';
-      ctx.fill();
-      p.x+=p.speedX;
-      p.y+=p.speedY;
-      if(p.x<0)p.x=canvas.width;
-      if(p.x>canvas.width)p.x=0;
-      if(p.y<0)p.y=canvas.height;
-      if(p.y>canvas.height)p.y=0;
-    });
-    requestAnimationFrame(animateParticles);
-  }
-  window.addEventListener('resize',initParticles);
-  initParticles();
-  animateParticles();
-</script>
 
 </body>
 </html>
